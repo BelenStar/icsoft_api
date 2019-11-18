@@ -6,5 +6,5 @@ import json
 users_controller = Blueprint('users_controller', __name__)
 
 @users_controller.route("/users")
-def login():
+def users():
     return json.dumps(user.User.getAllUsers())

@@ -1,27 +1,34 @@
 from repository import db_logic
 from models import user as us
+from models import errors
+import jwt
 import datetime
 
 #Devuelve una lista de objetos(serializados) de la clase usuario
 
-def login():
+def login(username, password):
 
-    return "NOT YET IMPLEMENTED"
+    result = db_logic.selectUserByUsername(username)
+
+    #Username not found
+    if len(result) == 0:
+        return errors.UsernameNotFound()
+
+    print(result)
+    if password != result[0][5]:
+        return errors.IncorrectPassword()
+
+    jwt = encode_auth_token(result[0])
+    print("utils/auth.py",jwt)
+    return jwt
 
 
 def encode_auth_token(id):
     try:
-        payload = {
-            'iat': datetime.datetime.now(),
-            'sub': id
-        }
-        token = jwt.encode(
-            payload,
-            app.config.get("SECRET_KEY"),
-            algorithm = 'HS256'
-        )
+        token = jwt.encode( {'id': str(id)}, "secret", algorithm = 'HS256')
         return token
     except Exception as e:
+        print("utils/auth.py encode_auth_token", e)
         return e
 
 def decode_auth_token(token):

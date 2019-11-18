@@ -21,7 +21,7 @@ class User():
 
         results = db_logic.getAllUsers()
         users = []
-
+        
         for row in results:
             user = User(row[0],row[1],row[2],row[3],row[4],row[5],row[6])
             print(user.username)
