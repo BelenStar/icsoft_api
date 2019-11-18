@@ -9,9 +9,9 @@ def login():
     results = db_logic.getAllUsers()
     print(results)
     users = []
+    
     for row in results:
         user = us.User(row[0],row[1],row[2],row[3],row[4],row[5],row[6])
         print(user.username)
         users.append(user.serialize())
-    return users
-
+    return users 
