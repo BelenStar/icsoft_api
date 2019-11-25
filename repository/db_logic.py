@@ -11,6 +11,9 @@ def selectUserByUsername(username):
     print("db_logic", result)
     return result
     #TODO: REVISAR
+def getAllItems():
+    res = db.engine.execute("SELECT * FROM items_table").fetchall()
+    return res
 def selectItemById():
     res = db.engine.execute(f"SELECT * FROM items_table WHERE id = '{id}'").fetchall()
     return res
