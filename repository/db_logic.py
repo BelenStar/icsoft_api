@@ -10,3 +10,7 @@ def selectUserByUsername(username):
     result = db.engine.execute(f"SELECT * FROM users_table WHERE username = '{username}' ").fetchall()
     print("db_logic", result)
     return result
+    #TODO: REVISAR
+def selectItem():
+    res = db.engine.execute("SELECT * FROM items_table").fetchall()
+    return res
