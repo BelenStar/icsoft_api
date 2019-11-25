@@ -13,3 +13,7 @@ class UsernameNotFound(Error):
 class IncorrectPassword(Error):
     def __init__(self):
         self.message = "incorrect password"
+
+class ItemNotFound(Error):
+    def __init__(self):
+        self.message = "item with given id not found"

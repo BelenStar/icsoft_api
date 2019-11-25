@@ -14,6 +14,6 @@ def selectUserByUsername(username):
 def getAllItems():
     res = db.engine.execute("SELECT * FROM items_table").fetchall()
     return res
-def selectItemById():
-    res = db.engine.execute(f"SELECT * FROM items_table WHERE id = '{id}'").fetchall()
+def selectItemById(id):
+    res = db.engine.execute(f"SELECT * FROM items_table WHERE id = {id}").fetchall()
     return res
