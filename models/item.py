@@ -38,3 +38,11 @@ class Item():
         row = res[0]
         item = Item(row[0],row[1], row[2], row[3], row[4], row[5], row[6], row[7])
         return item.serialize()
+
+    @staticmethod
+    def addItem(id, employee_id):
+
+        res = db_logic.addItem(id, employee_id)
+        if not res:
+            return errors.ItemNotFound()
+        return True

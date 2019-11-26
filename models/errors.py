@@ -17,3 +17,7 @@ class IncorrectPassword(Error):
 class ItemNotFound(Error):
     def __init__(self):
         self.message = "item with given id not found"
+
+class InvalidToken(Error):
+    def __init__(self):
+        self.message = "Invalid token"

@@ -29,7 +29,7 @@ def login():
         return json.dumps({"message": str(result)}), 500
 
 
-    print(body["username"])
+    
     return json.dumps({"token":str(result)})
 
 def hello():
